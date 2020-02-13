@@ -1,0 +1,311 @@
+Wednesday, February 12th
+Subnet Mask
+Designates your network
+Gives you your Network ID and your Host ID (PC Address)
+255.255.255.0/24
+Tells us that the first three octets are our network, meaning in the ip “192.168.10.1”, your network would be “192.168.10”.
+Gives us 8 bits left for our host ID (“1” in the example).
+***This subnet mask can hold 256 IP addresses
+/24 means that the first 3 octets are the network ID, so if it were “/16” then the first 2 octets are for the network and the last two octets are for your PCs.
+If the last octet to the network ID changes (like “192.168.11”), then that means that the PC is in a different network than yours (if you were in “192.168.10”).
+Binary
+192 in binary: 1100 0000
+255 in binary: 1111 1111
+IP Address
+32 Bits
+MAC Address
+48 Bits
+12 Hexadecimal numbers
+
+
+
+Monday, February 10th
+Each find one topic that you think is good and then write a one sentence blurb about the topic (do some research about it first).
+Subnet Mask
+Tells you the network address and host address
+255.255.255.X
+The network that information goes to
+Router uses this
+Switches connect to routers and the subnet mask is the identifier for the switch
+Router
+Keeps track of ports and ips
+To transport through routers, you use a router protocol to transfer information to other routers
+When routers transfer information, they keep track of the number of hops to make sure it gets to the destination the quickest.
+It also takes into account bandwidth and the ethernet cable to make sure it’s the most optimal route to go.
+
+Monday, February 3rd
+Packet Tracer
+Take physical networks and make them virtual
+Network simulation tool designed by Cisco Systems
+Allows users to create network topologies and imitate modern computer networks
+Simulation tool
+Great learning tool
+Easy to correct mistakes
+Visualize network as a whole
+Practice configuring equipment that you may not have access to - and cheaper than real gear. 
+Design and test network configurations before you build
+Lab 4-3
+Simulation mode lets you slow down the process hop-by-hop
+To save configs on routers
+From the router:
+Go to the config tab
+Select “Save NVRAM”
+
+Wednesday, January 29th
+ARP
+Network protocol that asks for the MAC address associated with an IPv4.
+Broadcasts it to the network and asks for who knows the answer to it.
+Computer starts
+Has IPs
+Looking for MAC
+All “f”s for the MAC address
+PC broadcasts the message to the router and then sends it to all the computers on the network, then sends back the MAC address associated to the IP address to the computer that asked.
+ARP Cache
+System stores the MAC address to the associated IP address
+Don’t have to keep sending ARP requests
+ARP straddles OSI layers 2 and 3
+When broadcasting an ARP request, the max amount of computers you’d really be able to broadcast to would be around 1000, any higher and it’ll clog the computers
+To remedy this, computers are broken up to specific routers which reduces the amount of broadcasts being sent.
+Lab 3-2
+To reboot to a USB
+Turn off computer
+Turn back on
+Spam f2 and delete
+Go to boot
+Change the usb to be first and second priority
+Press escape and save changes
+“ifconfig” to get your IP and MAC address on linux
+To change your MAC address:
+“macchanger -m xx:xx:xx:xx:xx:xx eth0” where the x’s are the MAC address you want to change to
+
+Monday, January 27th
+Logical Address
+IP
+Physical Address
+MAC Address
+Static IP address
+Computers that won’t move
+IE. Servers, CEO, Computers that you ALWAYS want to be active
+Dynamic IP address
+Computers that’ll turn off, given IP addresses.
+Router
+Connects LAN to LAN
+Comes on and asks for IP addresses
+Broadcast
+FF (means on)
+FF:FF:FF:FF:FF:FF
+Means every MAC address on your network is on
+When your PC turns on, it sends out a broadcast (^^^) asking where to send information to (a router and/or a switch)
+Broadcast messages are LAN specific
+They do not cross LAN
+Broadcast goes to switch, switch sends to every PC and the router, router gets it and will stop broadcasting it.
+Router doesn’t need to know every MAC address b/c it looks for IP address
+On OSI Layer 2 (Data Link)
+Switch
+Deals with MAC addresses
+Sends information between computers
+When turned on, asks for MAC addresses and creates a table
+When a computer transmits information, it sends it straight to the destination by using the MAC addresses
+Once a PC joins the network and is connected to the switch, the MAC address floods the switch network until the switch reads it and adds it to it’s MAC address table.
+Switch has 2 modes
+Store and forward
+Once info comes in, it waits until everything comes in before sending it
+Slower
+Makes sure all your information gets there
+Cut through
+Faster
+Doesn’t wait for all of the info, just sends it as it comes
+If there are missing things then it wouldn’t know, it would just send it.
+Not reliable
+ARP
+Protocol that PC’s use to identify other PCs on the network to get other IP addresses and MAC addresses (An “ARP Request”).
+Lab 3-1: ARP Observation
+To open the command prompt in admin mode:
+From start button - type cmd- and then right-click "command prompt" and select Run As Administrator
+The “ipconfig /all” command shows you all of your IPs, include your default gateway, IPv4, IPv6, etc.
+To start a wireshack capture, click on the “Ethernet0 2” and it will start collecting information
+To stop capture in wireshark, click the red square in the top right
+When you first try to run it on the VM, it was say that it might not work right because it seems malicious, but it’s not and it works fine.
+
+Wednesday, January 22nd
+IP Addresses
+Tell your three things
+Network (192)
+Host (168)
+MAC Address
+Example:
+192.168.1.1
+4 Bytes
+Layer 3 of the OSI Model (Networking)
+MAC Address
+12 Hexadecimal digits
+Uses 6 bytes (or 48 bits)
+Example:
+1F:A2:3C:4B:S2:6T
+The first three sets tell you the manufacturer, the last three digits are created randomly by the manufacturer (Serial Number)
+Layer 2 of the OSI Model (Data Link)
+To find your MAC address
+Type in “if config”
+MAC address is the hexadecimal number
+Subnet Mask
+Example: 255.255.255.0
+The “255”s show that they are on
+The last one is your network host (not a lot)
+Class A Networks
+Give one network and a lot of hosts
+255.0.0.0
+“/8” shows that the first 8 bytes are turned on (255.0.0.0)
+Military use mainly
+Class B Networks
+More networks, medium size hosts
+Fortune 500s can use these as well as consumers
+255.255.0.0
+“/16” shows that the first 16 bytes are turned on (255.255.0.0)
+Class C Networks
+Private IPs and home networks for less hosts
+Larger Network, smaller hosts
+Made for consumers
+255.255.255.0
+“/32” shows that the first 32 bytes are turned on (255.255.255.0)
+Wireshark
+Network capturing software
+Captures all of the traffic (packets) in and out of a specific computer
+Useful to tell if something is being accessed that shouldn’t be.
+Can be used to see where things are being accessed from and if it becomes too slow you can add more network points there.
+Packet Sniffer / Packet Capture
+Downside
+It can capture sensitive information
+
+Monday, January 20th
+LAN
+Local Area Network
+Home network is LAN
+Two most commonly used in modern LANs are…
+Ethernet
+Protocols and standards used for wired communications CSMA/CD LAN protocol
+Wifi
+Protocols and standards used for wireless communications
+
+
+WAN
+Wide Area Network
+Two LANs connected together
+MAN
+Metropolitan Area Network
+Networks that connect larger cities together
+PAN
+Around a person
+Topologies
+The network architecture used to interconnect the networking equipment
+Different types of topologies
+Bus
+One thick cable (copper) that connects to thinner cables that are then connected to computers
+Cons
+If the cable breaks, your network goes down
+Limited bandwidth (lots of collision)
+Star Network
+Central device (HUB or switch) that connects multiple computers
+HUB
+Relays information to every other port 
+Dummy device
+Clogs up the network
+Switch
+Transfers information to the corresponding computer
+Computer sends info to the Hub where it wants to send the info to another computer, the HUB reads the MAC addresses until it finds the right computer and sends the info
+Con
+If the HUB is down then all the computers will be down and will not be able to talk
+Ring Network
+Single token travels around and allows for use by each computer it goes to for some time
+Pros
+Prevents collisions
+If one computer goes down, the network will stay intact
+Lab 2-1
+The Netmask tells us what parts of the address are the host and network portions.
+To change the IP for Kali
+Click the network settings
+Click on the gear next to the “Wired” settings
+Go to IPv4
+Put in the address “192.168.100.x” where x is your machine number
+Set the netmask to “255.255.255.0”
+Click apply
+Toggle the switch next to the gear icon
+
+
+
+Wednesday, January 15th 2020
+
+VM
+A way to use different operating systems on the same computer
+Mac, Linux, Windows
+Adds extra security and a way to use the different OS
+OSI Model
+OSI model is a network protocol framework that uses 7 layers
+The 7 layers define the different stages that data must go through to travel from one device to another over a network.
+When data goes through the layers, it strips down the data.
+7 Layers in the OSI Model
+Application Data
+Uses images, ASCII characters
+Pulls the standard that shows images and characters
+Network: The data that the computer is sending / receiving
+“I would like to view the webpage google.com”
+Presentation Layer
+Compression, encryption, other encoding
+Session layer
+Do I have to separate data or is it so much that I need to break it down
+Session setup and tear down.
+***Application, Presentation, and Session are all normally viewed as the same layer
+Transportation Layer (4)
+Goes from A to B
+Get this package out
+Is it TCP? UDP?
+TCP
+Sends all information
+UDP
+Faster, sends information that sometimes gets lost but that’s ok
+Used in videos cause it reduces latency
+Checks if the computer is awake to receive the information
+Port numbers tell receiver what application the data is for
+Port 80 - HTTP web traffic
+Port 25 - SMTP e-mail
+Port 22 - SSH
+Network Layer
+Which router it’s going to take
+Where it’s going
+Checking IP
+Going through private, public, multiple
+IP Address of sender and receiver
+Data Link layer
+Needs to know your home address
+Home address = MAC address
+When I get to my destination, who do I bring it to
+Defines how the packets get onto the media
+When is it safe to send - prevent collisions with other data
+Is the recipient ready to receive
+Physical Layer
+Takes information and ASCII characters and converts it to Binary
+Physically sends bits over media
+Copper wires, fiber optic, radio, etc.
+Please (Physical)
+Do (Data Link)
+Not (Network)
+Throw (Transportation) 
+Sausage (Session)
+Pizza (Presentation)
+Away (Application)
+OSI and Network Protocols
+Standards are official guidelines that companies build and follow
+Different from protocols because protocols are a specific set of rules and standards and guidelines that you just have to follow and stay within the line.
+Why use a layered model like OSI?
+Dividing layers helps:
+Both protocol designers and implementers manage the complexity
+To concentrate on one aspect of communication at a given time.
+
+
+Class Lab 1-1:
+When you’re trying to sign in to Microsoft, instead click “Domain Join”.
+Setting up Windows 10 VM
+Bridged connection type connects directly to the physical network.
+“Ipconfig” displays information about your IP addresses
+“Tracert” followed by an address (tracert www.google.com) prints all the routers that you encounter between your computer and the website.
+“Nslookup” is used before you type in a website to query the Domain Name System (DNS) to obtain the domain or IP address of the website.
+Use it by typing “nslookup” and then pressing enter, then typing in the URL of a website.
